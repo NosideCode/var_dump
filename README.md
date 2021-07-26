@@ -4,40 +4,46 @@ PHP's var_dump function for JavaScript.
 
 ```js
 var_dump({
-    aString: "hello",
-    anArray: ["world!"],
-    anObject: {
-        anotherArray: [1, 2]
+    string: "hello",
+    array: ["world!"],
+    object: {
+        subkey: [1, 2, {deep: "nested"}],
+        empty: {}
     },
-    aNumber: 102,
-    aBigNumber: 102n,
-    aFunction: function (a, b, c) {},
-    aHtmlValue: document.createElement("div")
+    number: 100,
+    bigint: 100n,
+    func: function (a, b, c) {},
+    html: document.createElement("div")
 });
 ```
 will print...
 ```
 object(Object) (7) {
-    ["aString"] => string(5) "hello"
-    ["anArray"] => array(1) {
+    ["string"] => string(5) "hello"
+    ["array"] => array(1) {
         [0] => string(6) "world!"
     }
-    ["anObject"] => object(Object) (1) {
-        ["anotherArray"] => array(2) {
+    ["object"] => object(Object) (2) {
+        ["subkey"] => array(3) {
             [0] => number(1)
             [1] => number(2)
+            [2] => object(Object) (1) {
+                ["deep"] => string(6) "nested"
+            }
+        }
+        ["empty"] => object(Object) (0) {
         }
     }
-    ["aNumber"] => number(102)
-    ["aBigNumber"] => bigint(102)
-    ["aFunction"] => function {
-        [name] => aFunction
+    ["number"] => number(100)
+    ["bigint"] => bigint(100)
+    ["func"] => function {
+        [name] => func
         [parameters] => array(3) {
             [0] => string(1) "a"
             [1] => string(1) "b"
             [2] => string(1) "c"
         }
     }
-    ["aHtmlValue"] => HTMLElement(DIV)
+    ["html"] => HTMLElement(DIV)
 }
 ```
